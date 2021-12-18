@@ -1,7 +1,7 @@
 #include <stdio.h>
-#include "Heap.h";
+#include "MaxHeap.h";
 
-Heap::Heap(int max) 
+MaxHeap::MaxHeap(int max) 
 {
 	data = new Pair[max];
 	maxSize = max;
@@ -9,7 +9,7 @@ Heap::Heap(int max)
 	allocated = 1;
 }
 
-Heap::~Heap() {
+MaxHeap::~MaxHeap() {
 	if (allocated) {
 		delete[] data;
 	}
@@ -17,17 +17,17 @@ Heap::~Heap() {
 	data = NULL;
 }
 
-int Heap::Parent(int node) 
+int MaxHeap::Parent(int node) 
 {
 	return (node - 1) / 2;
 }
 
-int Heap::Left(int node) 
+int MaxHeap::Left(int node) 
 {
 	return (2 * node + 1);
 }
 
-int Heap::Right(int node)
+int MaxHeap::Right(int node)
 {
 	return (2 * node + 2);
 }
@@ -39,7 +39,7 @@ void Swap(Pair* x, Pair* y)
 	*y = temp;
 }
 
-void Heap::FixHeap(int node)
+void MaxHeap::FixHeap(int node)
 {
 	int max;
 	int left = Left(node);
@@ -66,7 +66,7 @@ void Heap::FixHeap(int node)
 	}
 }
 
-Pair Heap::DeleteMax()
+Pair MaxHeap::DeleteMax()
 {
 	//if (heapSize < 1)
 		//Handle Error;
@@ -78,7 +78,7 @@ Pair Heap::DeleteMax()
 	return(max);
 }
 
-void Heap::Insert(Pair item)
+void MaxHeap::Insert(Pair item)
 {
 	//if(heapSize == maxSize)
 		//Handle Error
@@ -93,7 +93,7 @@ void Heap::Insert(Pair item)
 	data[i] = item;
 }
 
-Heap::Heap(Pair A[], int n)
+MaxHeap::MaxHeap(Pair A[], int n)
 {
 	heapSize = maxSize = n;
 
@@ -107,7 +107,7 @@ Heap::Heap(Pair A[], int n)
 
 void HeapSort(Pair A[],int n)
 {
-	Heap H(A, n);
+	MaxHeap H(A, n);
 	Pair item;
 
 	for (int i = n - 1; i >= 1; i--)

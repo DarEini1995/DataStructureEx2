@@ -1,14 +1,14 @@
 #pragma once
-#ifndef HEAP_H
-# define HEAP_H
+#ifndef MAX_HEAP_H
+# define MAX_HEAP_H
 
 typedef struct {
 	int priority;
 	char* data;
 } Pair;
 
-class Heap {
-private: 
+class MaxHeap {
+private:
 	Pair* data;
 	int maxSize;
 	int heapSize;
@@ -19,9 +19,9 @@ private:
 	void FixHeap(int node);
 
 public:
-	Heap(int max);
-	Heap(Pair A[], int n);
-	~Heap();
+	MaxHeap(int max);
+	MaxHeap(Pair A[], int n);
+	~MaxHeap();
 	Pair Max();
 	Pair DeleteMax();
 	void Insert(Pair item);

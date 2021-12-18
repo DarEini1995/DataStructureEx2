@@ -18,12 +18,12 @@
     <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Heap.cpp">
+    <ClCompile Include="MaxHeap.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Heap.h">
+    <ClInclude Include="MaxHeap.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
