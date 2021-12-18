@@ -16,59 +16,44 @@ int getANativeNum() {
 	return -1;
 }
 
-
-
-int* getArr(int size) {
-	int* arr = new int[size];
-	string input;
-	int currentSizeCounter = 0;
+int isValidNum(string input) {
+	int candidateNum, tmp;
 	stringstream ss;
-	getline(cin, input);
+
 	ss << input;
-	string tmp;
-	int candidateNum;
-	while (!ss.eof()) {
-		if (currentSizeCounter > size) return 0;
-		ss >> tmp;
-		if ((stringstream(tmp) >> candidateNum) && (candidateNum > 0)) {
-			arr[currentSizeCounter++] = candidateNum;
-			tmp = " ";
-		}
-		else return 0;
+	ss >> tmp;
+	if (ss.eof()) { //validate we get only one word
+		//validate this word is a nateive number
+		if ((stringstream(input) >> candidateNum) && (candidateNum >= 0))
+			return candidateNum;
 	}
-	if (currentSizeCounter == size)
-		return arr;
 	return 0;
 }
 
-
 bool isInsertAction(string line) {
+	int countOfString = 0;
+	string token;  
+	stringstream ss(line); 
+	getline(ss, token, ' ');
+	if (token!= INSERT) return false;
+	countOfString++;
+	getline(ss, token, ' ');
+	if((countOfString==line.length())||!(isValidNum(token))) return false;
+	countOfString += token.length()+1;
+	if (countOfString==line.length()) return false;
 	return true;
 }
 
-bool isValidAction(string line) {
-	if (line == MEDIAN || line == CREATE_NEW_STRUCTURE || isInsertAction(line))
+
+bool isMedianAction(string line) {
+	if (line == MEDIAN)
 		return true;
 	return false;
 }
 
 
-
-
-string* getInput() {
-	string input;
-	stringstream ss;
-	//int actionsCount = 0;
-	int numOfActions = getANativeNum();
-	string* actions = new string[numOfActions];
-	if (numOfActions == WRONG_INPUT)return NULL;
-	for (int i = 0; i < numOfActions; i++) {
-		getline(cin, input);
-		if (isValidAction(input))
-			actions[i] = input;
-		else return NULL;
-	}
-	//if(!(ss<<inp).eof())
-	return actions;
-
+bool isNewStructureAction(string line) {
+	if (line == CREATE_NEW_STRUCTURE)
+		return true;
+	return false;
 }

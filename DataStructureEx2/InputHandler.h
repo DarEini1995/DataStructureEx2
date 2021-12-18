@@ -12,6 +12,7 @@
 #include <iostream>
 #include<string.h>  
 using namespace std;
+#define END_LINE "\n\n"
 #define CREATE_NEW_STRUCTURE "e"
 #define INSERT "f"
 #define MEDIAN "g"
@@ -22,6 +23,8 @@ string* getInput();
 int getANativeNum();
 int* getArr(int size);
 bool isInsertAction(string line);
-bool isValidAction(string line);
+bool isMedianAction(string line);
+bool isNewStructureAction(string line);
+bool isInsertAction(string line);
 
 #endif
